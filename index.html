@@ -2,33 +2,66 @@
 <html lang="en">
 <head>
   <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   <link href='styles/main.css' rel='stylesheet' type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body ng-app="Vergaderen">
-   <h1>Vergaderen</h1>
-  <div ng-controller='mainCtrl'class="list">
+  <div class="header">
+    <nav class="navbar navbar-default">
+        <a class="navbar-brand" href="http://localhost:8080/">Vergaderzaal</a>
+    </nav>
+    <div class="container">
+      <div class="jumbotron">
+        <div ng-controller='mainCtrl'class="list">
+            <label class="editing-label">Vergaderingen:</label>
+              <div class="row">
+                <div class="col-md-3">Name:</div>
+                  <input ng-model="Name" ng-blur="editing = false;" class="editing-label" type="text"  required />
+              </div>
+                <div class="row">
+                  <div class="col-md-3">Doel:</div>
+                    <input ng-model="Doel" ng-blur="editing = false;" class="editing-label" type="text" maxlength="50"  required/>
+               </div>
+               <div class="row">
+                 <div class="col-md-3">Informatie</div>
+                  <input ng-model="Informatie" ng-blur="editing = false;" class="editing-label "type="text" maxlength="50" required/>
+               </div>
+               <div class="row">
+                 <div class="col-md-3">Digitale-Tijd:</div>
+                  <input ng-model="Tijd" ng-blur="editing = false;" class="editing-label"  maxlength="5"  required  />
+              </div>
+          <div class="add">
+            <button type="submit" class="btn btn-success btn-default" ng-click="addVergadering(Name,Doel,Informatie,Tijd)" >+addVergadering</button>
+          </div>
+            <table class=" table table-bordered">
+              <thead>
+                <tr>
+                  <th>Name:</th>
+                  <th>Doel:</th>
+                  <th>Informatie</th>
+                  <th>Tijd:</th>
+                  <th>Delete:</th>
+                </tr>
+              </thead>
+             <tbody>
+               <tr ng-repeat-start="vergadering in Vergaderingen">
+                 <td>{{vergadering.Name}}</td>
+                 <td>{{vergadering.Doel}}</td>
+                 <td>{{vergadering.Informatie}}</td>
+                 <td>{{vergadering.Tijd}}</td>
+                 <td><a href="" ng-click="deleteVergadering(Vergaderingen, $index)">Delete</a></td>
+                 <tr ng-repeat-end></tr>
+               </tr >
+             </table>
+          </div>
 
-      <label class="editing-label">Vergadering:</label>
-      <p>Name:</p><input ng-model="Name" ng-blur="editing = false;" class="editing-label" type="text" placeholder="Vul uw naam in" maxlength="20"/>
-      <p>Doel:</p><input ng-model="Doel" ng-blur="editing = false;" class="editing-label" type="text" placeholder="Het doel van de vergadering"maxlength="50"/>
-      <p>Informatie:</p><input ng-model="Informatie" ng-blur="editing = false;" class="editing-label" type="text" placeholder="Informatie over de vergadering" maxlength="50"/>
-      <p>Tijd:</p><input ng-model="Tijd" ng-blur="editing = false;" class="editing-label" type="text" placeholder="Tijd"/>
-      <div class="add">
-        <a href="" ng-click="addVergadering(Name,Doel,Informatie,Tijd)">+AddVergadering</a><br>
       </div>
-
-       <div ng-repeat="vergadering in Vergaderingen">
-         {{vergadering.Name}}
-         {{vergadering.Doel}}
-         {{vergadering.Informatie}}
-         {{vergadering.Tijd}}
-      <a href="" ng-click="deleteVergadering(Vergaderingen, $index)">Delete</a>
-
-       </div>
-
-</div>
+    </div>
   <script src="vendor/angular.js" type="text/javascript"></script>
   <script src="scripts/app.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
