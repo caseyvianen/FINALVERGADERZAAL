@@ -1,5 +1,5 @@
-angular.module("Vergaderen", [])
-.controller('mainCtrl', function  ($scope){
+angular.module("Vergaderen", ['ngResource','lbServices'])
+.controller('mainCtrl', function  ($scope,Booking){
              $scope.Vergaderingen = [];
             $scope.deleteVergadering = function(Vergaderingen,$index)
              {
@@ -13,7 +13,7 @@ angular.module("Vergaderen", [])
 
 
 
+}
 
 
-               }
              });
