@@ -17,23 +17,24 @@
         <div ng-controller='mainCtrl'class="list">
             <label class="editing-label">Vergaderingen:</label>
               <div class="row">
-                <div class="col-md-3">Name:</div>
-                  <input ng-model="Name" ng-blur="editing = false;" class="editing-label" type="text"  required />
+                <div class="col-md-3">Naam:</div>
+                  <input ng-model="Naam" ng-blur="editing = false;" class="editing-label" type="text"  required />
                 </div>
                 <div class="row">
                   <div class="col-md-3">Doel:</div>
                     <input ng-model="Doel" ng-blur="editing = false;" class="editing-label" type="text" maxlength="50"  required/>
                </div>
                <div class="row">
-                 <div class="col-md-3">Informatie</div>
+                 <div class="col-md-3">Informatie:</div>
                   <input ng-model="Informatie" ng-blur="editing = false;" class="editing-label "type="text" maxlength="50" required/>
                </div>
                <div class="row">
-                 <div class="col-md-3">Digitale-Tijd:</div>
-                  <input ng-model="Tijd" ng-blur="editing = false;" class="editing-label"  maxlength="5"   required  />
+                 <div class="col-md-3">Datum:</div>
+                    <input type="datetime-local" ng-model="Datum" min="2016-01-01T00:00:00" max="2018-01-01T00:00:01">
+
               </div>
           <div class="add">
-            <button type="submit" class="btn btn-success btn-default" ng-click="addVergadering(Name,Doel,Informatie,Tijd)" >+addVergadering</button>
+            <button type="submit" class="btn btn-success btn-default" ng-click="addVergadering(Naam,Doel,Informatie,Datum)" >+addVergadering</button>
           </div>
               <table class=" table table-bordered">
                 <thead>
@@ -50,8 +51,8 @@
                    <td>{{booking.name}}</td>
                    <td>{{booking.purpose}}</td>
                    <td>{{booking.information}}</td>
-                   <td>{{booking.time}}</td>
-                   <td><a href="" ng-click="deleteVergadering(Vergaderingen, $index)">Delete</a></td>
+                   <td>{{booking.time| date:'medium'}}</td>
+                   <td><a href="" ng-click="deleteVergadering($index)">Delete</a></td>
                    <tr ng-repeat-end></tr>
                  </tr >
                </table>
