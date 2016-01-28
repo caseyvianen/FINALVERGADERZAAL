@@ -51,7 +51,7 @@
                    <td>{{booking.name}}</td>
                    <td>{{booking.purpose}}</td>
                    <td>{{booking.information}}</td>
-                   <td>{{booking.time| date:'medium'}}</td>
+                   <td>{{booking.time| date: 'MM/dd/yyyy HH:mm' : 'UTC'}}</td>
                    <td><a href="" ng-click="deleteVergadering($index)">Delete</a></td>
                    <tr ng-repeat-end></tr>
                  </tr >
